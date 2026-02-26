@@ -3,6 +3,7 @@
 #include <time.h>
 
 /* ================= INSERTION SORT ================= */
+// função que realiza o insertion sort e ordena o vetor
 
 void insertionSort(int A[], int n) {
     int pivo, j;
@@ -21,19 +22,20 @@ void insertionSort(int A[], int n) {
 }
 
 /* ================= MEDIÇÃO ================= */
+// em segundos
 
 double medirTempo(int A[], int n) {
 
-    int *copia = malloc(n * sizeof(int));
+    int *copia = malloc(n * sizeof(int)); // aloca memoria dinamicamente para a copia do vetor A
 
     for (int i = 0; i < n; i++)
-        copia[i] = A[i];
+        copia[i] = A[i];    // copia os elementos de A
 
-    clock_t inicio = clock();
+    clock_t inicio = clock();   // inicia medição
 
-    insertionSort(copia, n);
+    insertionSort(copia, n);    // ordena
 
-    clock_t fim = clock();
+    clock_t fim = clock();      // marca o fim da ordenação
 
     free(copia);
 
@@ -44,15 +46,15 @@ double medirTempo(int A[], int n) {
 
 int main() {
 
-    FILE *fp = fopen("entrada10k.txt", "r");
+    FILE *arquivo = fopen("entrada100k.txt", "r");
 
-    if (fp == NULL) {
+    if (arquivo == NULL) {
         printf("Erro ao abrir arquivo.\n");
         return 1;
     }
 
     int n;
-    fscanf(fp, "%d", &n);   // lê tamanho
+    fscanf(arquivo, "%d", &n);   // lê tamanho
 
     // Aloca 4 vetores
     int *aleatorio = malloc(n * sizeof(int));
@@ -61,19 +63,19 @@ int main() {
     int *inverso   = malloc(n * sizeof(int));
 
     // Lê os 4 vetores
-    for (int i = 0; i < n; i++) fscanf(fp, "%d", &aleatorio[i]);
-    for (int i = 0; i < n; i++) fscanf(fp, "%d", &repetido[i]);
-    for (int i = 0; i < n; i++) fscanf(fp, "%d", &ordenado[i]);
-    for (int i = 0; i < n; i++) fscanf(fp, "%d", &inverso[i]);
+    for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &aleatorio[i]);
+    for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &repetido[i]);
+    for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &ordenado[i]);
+    for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &inverso[i]);
 
-    fclose(fp);
+    fclose(arquivo);
 
     printf("===== Insertion Sort (%d elementos) =====\n", n);
 
     printf("Aleatorio: %f segundos\n", medirTempo(aleatorio, n));
     printf("Repetido:  %f segundos\n", medirTempo(repetido, n));
-    printf("Ordenado:  %f segundos\n", medirTempo(ordenado, n));
-    printf("Inverso:   %f segundos\n", medirTempo(inverso, n));
+    printf("Ordenado:  %f segundos (melhor caso O(n))\n", medirTempo(ordenado, n));
+    printf("Inverso:   %f segundos (pior caso O(n^2))\n", medirTempo(inverso, n));
 
     free(aleatorio);
     free(repetido);
