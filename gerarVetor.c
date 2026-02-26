@@ -27,8 +27,8 @@ void gerarInverso(int A[], int n) {
 
 void salvarVetor(FILE *arquivo, int A[], int n) {
     for (int i = 0; i < n; i++)
-        fprintf(fp, "%d ", A[i]);
-    fprintf(fp, "\n");
+        fprintf(arquivo, "%d ", A[i]);
+    fprintf(arquivo, "\n");
 }
 
 int main() {
