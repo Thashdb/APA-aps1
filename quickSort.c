@@ -12,7 +12,6 @@ void swap(int *a, int *b){
 // QUICK SORT (Hoare)
 
 int partition(int A[], int inicio, int fim){
-
     //  pivo fixo no inicio
 
     int pivo = A[inicio];
@@ -23,15 +22,12 @@ int partition(int A[], int inicio, int fim){
         do{
             i++;
         } while(A[i] < pivo);
-
         do{
             j--;
         } while(A[j] > pivo);
-
         if(i >= j){
             return j;
         }
-
         swap(&A[i], &A[j]);
     }
 }
