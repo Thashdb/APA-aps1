@@ -2,40 +2,64 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* ================= INSERTION SORT ================= */
-// função que realiza o insertion sort e ordena o vetor
+// troca
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
-void insertionSort(int A[], int n) {
-    int pivo, j;
+// QUICK SORT (Hoare)
 
-    for (int i = 1; i < n; i++) {
-        pivo = A[i];
-        j = i - 1;
+int partition(int A[], int inicio, int fim){
 
-        while (j >= 0 && A[j] > pivo) {
-            A[j + 1] = A[j];
+    //  pivo fixo no inicio
+
+    int pivo = A[inicio];
+    int i = inicio - 1;
+    int j = fim + 1;
+
+    while(1){
+        do{
+            i++;
+        } while(A[i] < pivo);
+
+        do{
             j--;
+        } while(A[j] > pivo);
+
+        if(i >= j){
+            return j;
         }
 
-        A[j + 1] = pivo;
+        swap(&A[i], &A[j]);
+    }
+}
+
+void quickSort(int A[], int left, int right){
+
+    if(left < right){
+        int q = partition(A, left, right);
+        quickSort(A, left, q);
+        quickSort(A, q + 1, right);
     }
 }
 
 /* ================= MEDIÇÃO ================= */
-// em segundos
 
 double medirTempo(int A[], int n) {
 
-    int *copia = malloc(n * sizeof(int)); // aloca memoria dinamicamente para a copia do vetor A
+    int *copia = malloc(n * sizeof(int));
+    if (copia == NULL) return 0;
 
     for (int i = 0; i < n; i++)
-        copia[i] = A[i];    // copia os elementos de A
+        copia[i] = A[i];
 
-    clock_t inicio = clock();   // inicia medição
+    clock_t inicio = clock();
 
-    insertionSort(copia, n);    // ordena
+    quickSort(copia, 0, n - 1);  // ✅ agora está correto
 
-    clock_t fim = clock();      // marca o fim da ordenação
+    clock_t fim = clock();
 
     free(copia);
 
@@ -54,15 +78,13 @@ int main() {
     }
 
     int n;
-    fscanf(arquivo, "%d", &n);   // lê tamanho
+    fscanf(arquivo, "%d", &n);
 
-    // Aloca 4 vetores
     int *aleatorio = malloc(n * sizeof(int));
     int *repetido  = malloc(n * sizeof(int));
     int *ordenado  = malloc(n * sizeof(int));
     int *inverso   = malloc(n * sizeof(int));
 
-    // Lê os 4 vetores
     for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &aleatorio[i]);
     for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &repetido[i]);
     for (int i = 0; i < n; i++) fscanf(arquivo, "%d", &ordenado[i]);
@@ -70,12 +92,12 @@ int main() {
 
     fclose(arquivo);
 
-    printf("===== Insertion Sort (%d elementos) =====\n", n);
+    printf("===== Quick Sort (Hoare) (%d elementos) =====\n", n);
 
     printf("Aleatorio: %f segundos\n", medirTempo(aleatorio, n));
     printf("Repetido:  %f segundos\n", medirTempo(repetido, n));
-    printf("Ordenado:  %f segundos (melhor caso Omega(n))\n", medirTempo(ordenado, n));
-    printf("Inverso:   %f segundos (pior caso O(n^2))\n", medirTempo(inverso, n));
+    printf("Ordenado:  %f segundos\n", medirTempo(ordenado, n));
+    printf("Inverso:   %f segundos\n", medirTempo(inverso, n));
 
     free(aleatorio);
     free(repetido);

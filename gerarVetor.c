@@ -6,23 +6,27 @@
 
 void gerarAleatorio(int A[], int n) {
     for (int i = 0; i < n; i++)
-        A[i] = rand();  // gera números pseudo aleatórios
+        A[i] = rand();  
+        // gera números pseudo aleatórios
 }
 
 void gerarPoucosValores(int A[], int n) {
     for (int i = 0; i < n; i++)
-        A[i] = rand() % 10;  // limita a esolha dos valores até a cte x; x=10
-                                // gera alta repeticao de valores baixos
+        A[i] = rand() % 10;  
+        // limita a esolha dos valores até a cte x; x=10
+            // gera alta repeticao de valores baixos
 }
 
 void gerarOrdenado(int A[], int n) {
     for (int i = 0; i < n; i++)
-        A[i] = i+1;           // ordenado igual a  i+1 (de 1 a n)
+        A[i] = i+1;          
+        // ordenado igual a  i+1 (de 1 a n)
 }
 
 void gerarInverso(int A[], int n) {
     for (int i = 0; i < n; i++)
-        A[i] = n - i;          // ordenado ao contrário (de n a 1)
+        A[i] = n - i;          
+        // ordenado ao contrário (de n a 1)
 }
 
 void salvarVetor(FILE *arquivo, int A[], int n) {
