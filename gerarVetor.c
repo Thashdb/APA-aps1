@@ -37,9 +37,9 @@ void salvarVetor(FILE *arquivo, int A[], int n) {
 
 int main() {
 
-    int n = 100000;   // tamanho do vetor
+    int n = 1000000;   // tamanho do vetor
 
-    FILE *arquivo = fopen("entrada100k.txt", "w");
+    FILE *arquivo = fopen("output/entrada1000k.txt", "w");
 
     if (arquivo == NULL) {
         printf("Erro ao criar arquivo.\n");

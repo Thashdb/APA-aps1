@@ -53,7 +53,7 @@ double medirTempo(int A[], int n) {
 
     clock_t inicio = clock();
 
-    quickSort(copia, 0, n - 1);  // ✅ agora está correto
+    quickSort(copia, 0, n - 1); 
 
     clock_t fim = clock();
 
@@ -66,7 +66,7 @@ double medirTempo(int A[], int n) {
 
 int main() {
 
-    FILE *arquivo = fopen("entrada100k.txt", "r");
+    FILE *arquivo = fopen("output/entrada1000k.txt", "r");
 
     if (arquivo == NULL) {
         printf("Erro ao abrir arquivo.\n");

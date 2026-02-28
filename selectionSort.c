@@ -46,7 +46,7 @@ double medirTempo(int A[], int n) {
 
 int main() {
 
-    FILE *arquivo = fopen("entrada100k.txt", "r");
+    FILE *arquivo = fopen("output/entrada100k.txt", "r");
 
     if (arquivo == NULL) {
         printf("Erro ao abrir arquivo.\n");
