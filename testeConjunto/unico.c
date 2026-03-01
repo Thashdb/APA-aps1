@@ -170,7 +170,7 @@ int main(){
 
     srand(time(NULL));
 
-    FILE *arquivo = fopen("../entrada500k.txt", "r");
+    FILE *arquivo = fopen("../output/entrada20k.txt", "r");
     if(arquivo == NULL){
         printf("Erro ao abrir arquivo.\n");
         return 1;
