@@ -60,8 +60,8 @@ int knapsack(int n, int M, int peso[], int valor[], int prof) {
 
 int main() {
 
-    int p[] = {1, 1, 1};
-    int v[] = {10, 20, 30};
+    int peso[] = {1, 1, 1};
+    int valor[] = {10, 20, 30};
 
     int n = 3;
     int M = 50;
