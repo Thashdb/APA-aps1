@@ -94,20 +94,20 @@ int main() {
 
     // lista de arquivos
 char *arquivos[] = {
-    "../arquivos/teste_20_10.txt",
-    "../arquivos/teste_50_30.txt",
-    "../arquivos/teste_100_30.txt",
-    "../arquivos/teste_200_50.txt",
-    "../arquivos/teste_500_10.txt",
-    "../arquivos/teste_500_100.txt",
-    "../arquivos/teste_1000_50.txt",
-    "../arquivos/teste_10000_100.txt",
-    "../arquivos/teste_500000_100.txt"
+    "arquivos/teste_20_10.txt",
+    "arquivos/teste_50_30.txt",
+    "arquivos/teste_100_30.txt",
+    "arquivos/teste_200_50.txt",
+    "arquivos/teste_500_10.txt",
+    "arquivos/teste_500_100.txt",
+    "arquivos/teste_1000_50.txt",
+    "arquivos/teste_10000_100.txt",
+    "arquivos/teste_500000_100.txt"
 };
 
     int qtd = sizeof(arquivos) / sizeof(arquivos[0]);
 
-    printf("=== TESTES AUTOMATICOS ===\n\n");
+    printf("=== GULOSO ===\n\n");
 
     for (int t = 0; t < qtd; t++) {
 

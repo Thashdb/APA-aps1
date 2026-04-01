@@ -45,12 +45,10 @@ int main() {
 
     // SOMENTE ARQUIVOS PEQUENOS
 char *arquivos[] = {
-    "../arquivos/teste_20_10.txt",
-    "../arquivos/teste_50_30.txt",
-    "../arquivos/teste_100_30.txt",
-    "../arquivos/teste_200_50.txt",
-    "../arquivos/teste_500_10.txt",
-    "../arquivos/teste_500_100.txt",
+    "arquivos/teste_20_10.txt",
+    "arquivos/teste_50_30.txt",
+    "arquivos/teste_100_30.txt",
+    "arquivos/teste_200_50.txt"
 };
 
     int qtd = sizeof(arquivos) / sizeof(arquivos[0]);
